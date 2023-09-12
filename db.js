@@ -7,6 +7,7 @@ const client = new Client({
     database,
     password,
     port,
+    ssl: true
 });
 
 client.connect();

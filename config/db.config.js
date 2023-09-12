@@ -1,8 +1,8 @@
 module.exports = {
-    host: "localhost",
-    user: "postgres",
-    password: "asdf123",
-    database: "postgres",
+    host: "dpg-cjvkm60js92s7390mfmg-a.singapore-postgres.render.com",
+    user: "sandesh",
+    password: "iM1qJsYCLQ2EXktyKVGMiCkZitgWJFSk",
+    database: "rajudai_postgres",
     port: "5432",
     dialect: "postgres",
     pool: {
