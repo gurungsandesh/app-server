@@ -4,7 +4,9 @@ exports.getAllAccount = async (req, res) => {
     try {
         const getRouteQuery = `SELECT * FROM accounts`;
         const allRoutesResult = await client.query(getRouteQuery, []);
-        res.json(allRoutesResult.rows);
+        if (allRoutesResult) {
+            res.json(allRoutesResult.rows);
+        }
     } catch (error) {
         return res.send({
             message: "Error occured"
@@ -24,6 +26,29 @@ exports.addAccount = async (req, res) => {
                 message: "Account Added"
             });
 
+        }
+    } catch (error) {
+        console.log("error is", error);
+        return res.send({
+            message: "Error occured"
+        })
+    }
+}
+
+
+exports.addValue = async (req, res) => {
+    try {
+
+        const accountName = req.body.name;
+        const value = req.body.value;
+        console.log("🚀 ~ file: routes.controller.js:43 ~ exports.addValue= ~ req.body:", req.body)
+
+        const insertQuery = `UPDATE accounts SET value = value + $1 where name = $2`;
+        const updateTable = await client.query(insertQuery, [value, accountName]);
+        if (updateTable) {
+            res.send({
+                message: "Vlaue Added"
+            });
         }
     } catch (error) {
         console.log("error is", error);
