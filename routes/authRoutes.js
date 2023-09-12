@@ -2,7 +2,8 @@ const express = require('express');
 const authController = require('../controller/auth.controller');
 const router = express.Router();
 const verifySignUp = require("../middleware/verifySignUp")
-const authJwt = require("../middleware/authJwt")
+
+
 
 router
     .route('/signup')
@@ -10,7 +11,7 @@ router
 
 router
     .route('/signin')
-    .post([authJwt.verifyToken], authController.signin)
+    .post(authController.signin)
 
 
 module.exports = router;
