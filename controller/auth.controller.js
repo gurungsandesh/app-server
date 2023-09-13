@@ -40,11 +40,16 @@ exports.signin = async (req, res, next) => {
 
         const searchUserEmailResult = await client.query(searchUserEmailQuery, [userEmail])
         const searchUserPasswordResult = await client.query(searchPasswordQuery, [userEmail])
+        console.log("🚀 ~ file: auth.controller.js:43 ~ exports.signin= ~ searchUserPasswordResult:", searchUserPasswordResult.rows[searchUserPasswordResult.rows.length - 1].password)
 
         if (searchUserEmailResult.rows.length > 0) {
-            if (searchUserPasswordResult.rows.length > 0) {
+            if (searchUserPasswordResult.rows[searchUserPasswordResult.rows.length - 1].password === reqPassword) {
                 return res.send({
-                    message: "User found"
+                    message: "User found asdfasdf"
+                })
+            } else {
+                return res.status(500).send({
+                    message: "Password not matched"
                 })
             }
         } else {
