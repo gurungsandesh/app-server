@@ -45,7 +45,7 @@ exports.signin = async (req, res, next) => {
         if (searchUserEmailResult.rows.length > 0) {
             if (searchUserPasswordResult.rows[searchUserPasswordResult.rows.length - 1].password === reqPassword) {
                 return res.send({
-                    message: "User found ",
+                    message: "User found",
                     data: {
                         username: searchUserEmailResult.rows[0].username
                     }
