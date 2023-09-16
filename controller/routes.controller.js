@@ -47,7 +47,7 @@ exports.addValue = async (req, res) => {
         const updateTable = await client.query(insertQuery, [value, accountName]);
         if (updateTable) {
             res.send({
-                message: "Vlaue Added"
+                message: "added"
             });
         }
     } catch (error) {
